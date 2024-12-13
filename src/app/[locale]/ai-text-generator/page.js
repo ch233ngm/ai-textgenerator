@@ -2,7 +2,6 @@ import { useTranslations } from 'next-intl';
 import WhyUseOurAITextGenerator from '../../../components/WhyUseOurAITextGenerator';
 import FrequentlyAskedQuestions from '../../../components/FrequentlyAskedQuestions';
 import AITextGeneratorClient from '../../../components/AITextGeneratorClient';
-import GoogleAnalytics from '../../../components/GoogleAnalytics';
 
 export async function generateMetadata({ params }) {
     const { locale } = await params;
@@ -34,7 +33,6 @@ export default function Home() {
             <AITextGeneratorClient/>
             <WhyUseOurAITextGenerator />
             <FrequentlyAskedQuestions />
-            <GoogleAnalytics />
         </div>
     );
 }

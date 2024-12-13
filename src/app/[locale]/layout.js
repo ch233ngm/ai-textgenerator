@@ -3,6 +3,8 @@ import '../globals.css'
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { ViewTransitions } from 'next-view-transitions'
+import GoogleAnalytics from '../../components/GoogleAnalytics';
+
 
 export default async function RootLayout({ children, params }) {
   const { locale } = await params;
@@ -20,6 +22,7 @@ export default async function RootLayout({ children, params }) {
               {children}
             </NextIntlClientProvider>
           </main>
+          <GoogleAnalytics />
         </body>
       </html>
     </ViewTransitions>
