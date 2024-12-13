@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Link } from 'next-view-transitions'
 import LanguageSwitcher from './LanguageSwitcher';
 import NotificationBellWrapper from './NotificationBellWrapper';
 import { useTranslations } from 'next-intl';

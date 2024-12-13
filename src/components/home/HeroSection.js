@@ -2,12 +2,12 @@
 
 import { useTranslations } from 'next-intl';
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useTransitionRouter } from 'next-view-transitions'
 import React from "react";
 
 export default function HeroSection() {
   const t = useTranslations('Index');
-  const router = useRouter();
+  const router = useTransitionRouter();
   const [displayText1, setDisplayText1] = useState('');
   const [displayText2, setDisplayText2] = useState('');
   const [displayText3, setDisplayText3] = useState('');
@@ -60,18 +60,8 @@ export default function HeroSection() {
       clearInterval(timer1);
     };
   }, [t]);
-  const handleGetStarted = (e) => {
-    e.preventDefault();
-    // View Transition 过渡
-    if (document.startViewTransition) {
-      document.startViewTransition(() => {
-        React.startTransition(() => { // 新增 startTransition
-          router.push('/ai-text-generator');
-        });
-      });
-    } else {
+  const handleGetStarted = () => {
       router.push('/ai-text-generator');
-    }
   };
   return (
     <div className="hero bg-base-200 min-h-screen">
