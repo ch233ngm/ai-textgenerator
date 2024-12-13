@@ -21,7 +21,7 @@ export default function Home() {
     const handleGenerate = async () => {
         setIsGenerating(true);
 
-        const result = await fetch('/api/ai-text-generator', {
+        const result = await fetch(`${process.env.NEXT_PUBLIC_API_URL}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
