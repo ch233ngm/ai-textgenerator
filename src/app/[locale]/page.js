@@ -9,7 +9,7 @@ export async function generateMetadata({ params }) {
 
   return {
     title: 'AI Text Generator (Free, No Login!)',
-    description: "",
+    description: "Generate creative text, articles, and more with our AI Text Generator, no login needed! Free, no sign-up required. Don't miss out on your creative journey!",
     keywords: '',
     alternates: {
       canonical: canonicalUrl,
