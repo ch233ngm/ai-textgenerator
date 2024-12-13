@@ -62,10 +62,8 @@ export default function HeroSection() {
   }, [t]);
   const handleGetStarted = (e) => {
     e.preventDefault();
-    console.log('拦截跳转行为')
     // View Transition 过渡
     if (document.startViewTransition) {
-      console.log('开始 View Transition');
       document.startViewTransition(() => {
         React.startTransition(() => { // 新增 startTransition
           router.push('/ai-text-generator');

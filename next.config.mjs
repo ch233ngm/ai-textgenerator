@@ -3,16 +3,9 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin('./src/app/i18n.js');
 
 const nextConfig = {
-    images: {
-        remotePatterns: [
-            {
-                protocol: 'https',
-                hostname: 'r2-worker.ch233ngm.workers.dev',
-                port: '',
-                pathname: '/**',
-                search: '',
-            }
-        ],
+    experimental: {
+        nextScriptWorkers: true,
+        viewTransitions: true,
     }
 };
 export default withNextIntl(nextConfig);
