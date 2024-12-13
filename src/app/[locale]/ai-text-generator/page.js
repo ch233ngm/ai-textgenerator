@@ -1,4 +1,3 @@
-import { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 import WhyUseOurAITextGenerator from '../../../components/WhyUseOurAITextGenerator';
 import FrequentlyAskedQuestions from '../../../components/FrequentlyAskedQuestions';
