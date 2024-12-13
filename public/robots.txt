@@ -1,1 +1,5 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://ai-textgenerator.net/api/sitemap
 Sitemap: https://ai-textgenerator.net/sitemap.xml
