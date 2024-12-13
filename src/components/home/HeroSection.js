@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import React from "react";
 
 export default function HeroSection() {
   const t = useTranslations('Index');
@@ -59,8 +60,20 @@ export default function HeroSection() {
       clearInterval(timer1);
     };
   }, [t]);
-  const handleGetStarted = () => {
-    router.push('/ai-text-generator');
+  const handleGetStarted = (e) => {
+    e.preventDefault();
+    console.log('拦截跳转行为')
+    // View Transition 过渡
+    if (document.startViewTransition) {
+      console.log('开始 View Transition');
+      document.startViewTransition(() => {
+        React.startTransition(() => { // 新增 startTransition
+          router.push('/ai-text-generator');
+        });
+      });
+    } else {
+      router.push('/ai-text-generator');
+    }
   };
   return (
     <div className="hero bg-base-200 min-h-screen">
@@ -74,7 +87,7 @@ export default function HeroSection() {
         <div>
           <h1 className="text-5xl font-bold">{t('heroH1')}</h1>
           <p className="py-6 font-mono">
-            {t('heroP')}<br/> {t('heroP2')}
+            {t('heroP')}<br /> {t('heroP2')}
           </p>
           <button className="btn btn-primary" onClick={handleGetStarted}>Get Started</button>
         </div>
