@@ -2,7 +2,7 @@ import createMiddleware from 'next-intl/middleware';
 import { NextResponse } from 'next/server';
 
 const intlMiddleware = createMiddleware({
-  locales: ['en', 'zh'],
+  locales: ['en', 'zh', 'fr'],
   defaultLocale: 'en'
 });
 
@@ -12,5 +12,5 @@ export default function middleware(request) {
 }
 
 export const config = {
-  matcher: ['/((?!api|_next|.*\\..*).*)', '/', '/(zh|en)/:path*']
+  matcher: ['/((?!api|_next|.*\\..*).*)', '/', '/(zh|en|fr)/:path*']
 };

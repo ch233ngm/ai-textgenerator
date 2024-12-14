@@ -47,6 +47,14 @@ export default function LanguageSwitcher() {
             中文
           </a>
         </li>
+        <li>
+          <a 
+            onClick={() => changeLanguage('fr')}
+            className={locale === 'fr' ? 'active' : ''}
+          >
+            Français
+          </a>
+        </li>
       </ul>
     </div>
   );

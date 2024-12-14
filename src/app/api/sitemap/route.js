@@ -4,8 +4,10 @@ export async function GET() {
     const pages = [
       { loc: '/en', lastmod: '2024-12-14', changefreq: 'daily', priority: 1.0 },
       { loc: '/zh', lastmod: '2024-12-14', changefreq: 'daily', priority: 1.0 },
+      { loc: '/fr', lastmod: '2024-12-15', changefreq: 'daily', priority: 1.0 },
       { loc: '/en/ai-text-generator', lastmod: '2024-12-14', changefreq: 'weekly', priority: 0.8 },
       { loc: '/zh/ai-text-generator', lastmod: '2024-12-14', changefreq: 'weekly', priority: 0.8 },
+      { loc: '/fr/ai-text-generator', lastmod: '2024-12-15', changefreq: 'weekly', priority: 0.8 },
     ];
   
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
