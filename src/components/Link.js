@@ -14,7 +14,7 @@ const CustomLink = ({ href, ...rest }) => {
   }
 
   return (
-    <a className="break-words" target="_blank" rel="noopener noreferrer" href={href} {...rest} />
+    <a className="break-words" target="_blank" rel="noopener noreferrer nofollow" href={href} {...rest} />
   )
 }
 
