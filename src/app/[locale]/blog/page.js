@@ -19,6 +19,7 @@ export async function generateMetadata({ params }) {
 
 export default function Blog() {
     const posts = allCoreContent(allBlogs)
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
     return (
         <div className="bg-white pl-[calc(100vw-100%)] text-black antialiased mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0">
             <Main posts={posts} />
