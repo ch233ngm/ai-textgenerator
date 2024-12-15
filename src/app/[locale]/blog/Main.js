@@ -37,7 +37,7 @@ export default function Home({ posts }) {
                                                 </h2>
                                                 <div className="flex flex-wrap">
                                                     {tags.map((tag) => (
-                                                        <a className='mr-3 text-sm font-medium uppercase text-pink-500 hover:text-pink-600'>
+                                                        <a key={tag} className='mr-3 text-sm font-medium uppercase text-pink-500 hover:text-pink-600'>
                                                             {tag}
                                                         </a>
                                                     ))}
