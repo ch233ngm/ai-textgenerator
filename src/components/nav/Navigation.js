@@ -20,7 +20,7 @@ export default function Navigation() {
                             <li><Link href="/"><HomeIcon className="h-5 w-5 mr-2" />{t('Home')}</Link></li>
                             {/* <li><Link href="/feature"><SparklesIcon className="h-5 w-5 mr-2" />{t('Features')}</Link></li> */}
                             <li><Link href="/blog"><NewspaperIcon className="h-5 w-5 mr-2" />{t('Blog')}</Link></li>
-                            <li><Link href="/about"><FaceSmileIcon className="h-5 w-5 mr-2" />{t('About')}</Link></li>
+                            <li><Link href="/blog/about"><FaceSmileIcon className="h-5 w-5 mr-2" />{t('About')}</Link></li>
                         </ul>
                     </div>
                     <a className="btn btn-ghost normal-case text-xl" href='/ai-text-generator'>AI-Text<PencilIcon className="h-5 w-5 mr-2"/></a>
@@ -29,7 +29,7 @@ export default function Navigation() {
                     <ul className="menu menu-horizontal px-1">
                         <li><Link href="/"><HomeIcon className="h-5 w-5 mr-2" />{t('Home')}</Link></li>
                         <li><Link href="/blog"><NewspaperIcon className="h-5 w-5 mr-2" />{t('Blog')}</Link></li>
-                        <li><Link href="/about"><FaceSmileIcon className="h-5 w-5 mr-2" />{t('About')}</Link></li>
+                        <li><Link href="/blog/about"><FaceSmileIcon className="h-5 w-5 mr-2" />{t('About')}</Link></li>
                     </ul>
                 </div>
                 <div className="navbar-end">

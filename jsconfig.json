@@ -3,7 +3,8 @@
     "paths": {
       "@/*": ["./src/*"],
       "contentlayer/generated": ["./.contentlayer/generated"],
-      "@css/*": ["./css/*"]
+      "@css/*": ["./css/*"],
+      "@data/*": ["./data/*"],
     }
   }
 }

@@ -1,4 +1,7 @@
 import { Link } from 'next-view-transitions';
+import { formatDate } from 'pliny/utils/formatDate'
+import siteMetadata from '@data/siteMetadata'
+
 const MAX_DISPLAY = 5;
 
 export default function Home({ posts }) {
@@ -9,7 +12,7 @@ export default function Home({ posts }) {
                     <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
                         Latest
                     </h1>
-                    <p className="text-lg leading-7 text-gray-500">A blog created with Next.js and Tailwind.css</p>
+                    <p className="text-lg leading-7 text-gray-500">Demystifying AI text generation for creators and developers</p>
                 </div>
                 <ul className="divide-y divide-gray-200">
                     {!posts.length && 'No posts found.'}
@@ -21,7 +24,7 @@ export default function Home({ posts }) {
                                     <dl>
                                         <dt className="sr-only">Published on</dt>
                                         <dd className="text-base font-medium leading-6 text-gray-500">
-                                            <time dateTime={date}>{date}</time>
+                                            <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
                                         </dd>
                                     </dl>
                                     <div className="space-y-5 xl:col-span-3">
