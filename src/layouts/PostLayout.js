@@ -79,6 +79,13 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
             </dl>
             <div className="divide-y divide-gray-200 xl:col-span-3 xl:row-span-2 xl:pb-0">
               <div className="prose max-w-none pb-8 pt-10">{children}</div>
+              <div className="pb-6 pt-6 text-sm text-gray-700">
+                <Link href="https://link.zhihu.com/?target=https%3A//ai-textgenerator.net">
+                  Discuss on Zhihu
+                </Link>
+                {` • `}
+                <Link href="https://github.com/ch233ngm/ai-textgenerator">View on GitHub</Link>
+              </div>
             </div>
             <footer>
               <div className="divide-gray-200 text-sm font-medium leading-5 xl:col-start-1 xl:row-start-2 xl:divide-y">

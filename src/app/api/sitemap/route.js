@@ -24,7 +24,7 @@ export async function GET() {
          const lastModified = stats.mtime.toISOString().split('T')[0];
          const slug = path.parse(file).name;
  
-         ['en'].forEach(lang => {
+         ['en','zh'].forEach(lang => {
              pages.push({
                  loc: `/${lang}/blog/${slug}`,
                  lastmod: lastModified,
