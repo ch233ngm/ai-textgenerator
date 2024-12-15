@@ -11,7 +11,9 @@
         "showPrompt": "  你好！我是一个AI文本生成器",
         "showPrompt1": "  请输入你的文本... ",
         "showPrompt2": "  告诉我关于你！",
-        "showPrompt3": "  我是一个免费的AI文本生成器..."
+        "showPrompt3": "  我是一个免费的AI文本生成器...",
+        "title": "AI文本生成器（免费，无需登录！）",
+        "description": "使用我们的 AI 文本生成器生成创意文本、文章等，无需登录！免费，无需注册。不要错过你的创意之旅！"
     },
     "AITextGenerator": {
         "copied": "复制成功!",

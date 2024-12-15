@@ -1,15 +1,15 @@
 import HeroSection from '@/components/home/HeroSection';
-import { useTranslations } from 'next-intl';
-
+import { getTranslations } from 'next-intl/server';
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   const baseUrl = 'https://ai-textgenerator.net';
   const canonicalUrl = `${baseUrl}/${locale}`;
+  const t = await getTranslations('Index');
 
   return {
-    title: 'AI Text Generator (Free, No Login!)',
-    description: "Generate creative text, articles, and more with our AI Text Generator, no login needed! Free, no sign-up required. Don't miss out on your creative journey!",
+    title: t('title'),
+    description: t('description'),
     keywords: '',
     alternates: {
       canonical: canonicalUrl,

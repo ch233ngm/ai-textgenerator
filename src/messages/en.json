@@ -11,7 +11,9 @@
         "showPrompt": "  Hi! I'm an AI text generator.",
         "showPrompt1": "  Please enter your text here... ",
         "showPrompt2": "  Tell me all about you!",
-        "showPrompt3": "  I'm a Free AI Text Generator..."
+        "showPrompt3": "  I'm a Free AI Text Generator...",
+        "title": "AI Text Generator (Free, No Login!)",
+        "description": "Generate creative text, articles, and more with our AI Text Generator, no login needed! Free, no sign-up required. Don't miss out on your creative journey!"
     },
     "AITextGenerator": {
         "copied": "Copied!",

@@ -62,6 +62,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                           {author.twitter && (
                             <Link
                               href={author.twitter}
+                              rel="nofollow noopener noreferrer"
                               className="text-pink-500 hover:text-pink-600 "
                             >
                               {author.twitter
