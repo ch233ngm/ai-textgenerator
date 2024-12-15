@@ -2,6 +2,20 @@ import Main from './Main';
 import { allBlogs } from 'contentlayer/generated'
 import { allCoreContent } from 'pliny/utils/contentlayer'
 
+export async function generateMetadata({ params }) {
+    const { locale } = await params;
+    const baseUrl = 'https://ai-textgenerator.net';
+    const canonicalUrl = `${baseUrl}/${locale}/blog`;
+
+    return {
+        title: 'AI Text Generator Blog - Insights on AI Writing and Language Models',
+        description: "Explore our blog for the latest insights on AI text generation, language models, and content creation. Learn how to leverage AI for your writing needs.",
+        keywords: '',
+        alternates: {
+            canonical: canonicalUrl,
+        },
+    };
+}
 
 export default function Blog() {
     const posts = allCoreContent(allBlogs)
