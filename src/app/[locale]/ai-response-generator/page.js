@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import RadioGroup from '@/components/RadioGroup';
 import AIResponseChat from '@/components/AIResponsechat';
 export default function AIResponseGenerator() {
+    const [selectedScene, setSelectedScene] = useState('');
+    const [selectedCounterpart, setSelectedCounterpart] = useState('');
     const sceneOptions = [
         'Professional',
         'Friendly',
@@ -41,11 +43,12 @@ export default function AIResponseGenerator() {
         // 这里添加生成响应的逻辑
         // 获取用户输入的数据
         let requestData = {
-            message: inputText,
+            // message: inputText,
             responseLength: rangeValue,
-            counterpart: counterpart,
-            scence : scence,
+            counterpart: selectedCounterpart,   
+            scence : selectedScene,
         }
+        console.log('requestData:', requestData);
         // 完成后，记得设置 setIsGenerating(false)
         setTimeout(() => setIsGenerating(false), 2000); // 模拟生成响应的假设
     };
@@ -97,13 +100,23 @@ export default function AIResponseGenerator() {
                             <span className='font-bold'>Scene</span>
                             <span className='text-gray-400 text-sm'>&nbsp;(optional)</span>
                         </div>
-                        <RadioGroup options={sceneOptions} groupName={'response1'}/>
+                        <RadioGroup
+                            options={sceneOptions}
+                            groupName={'response1'}
+                            selectedOption={selectedScene}
+                            onChange={(value) => setSelectedScene(value)}
+                        />
                         <div className="divider"></div>
                         <div className=''>
                             <span className='font-bold'>Counterpart</span>
                             <span className='text-gray-400 text-sm'>&nbsp;(optional)</span>
                         </div>
-                        <RadioGroup options={counterpartOptions} groupName={'response2'}/>
+                        <RadioGroup
+                            options={counterpartOptions}
+                            groupName={'response2'}
+                            selectedOption={selectedCounterpart}
+                            onChange={(value) => setSelectedCounterpart(value)}
+                        />
                         <div className="divider  divider-secondary"></div>
                         <div className='pb-4 flex items-center justify-between'>
                             <span className='font-bold'>Response Length</span>
