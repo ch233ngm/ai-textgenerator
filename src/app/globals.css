@@ -4,6 +4,7 @@
 
 :root {
     --view-transition-duration: 1s;
+    --navbar-height: 68px; /* 默认值 */
 }
 
 ::view-transition-old(root),

@@ -5,6 +5,7 @@
       "contentlayer/generated": ["./.contentlayer/generated"],
       "@css/*": ["./css/*"],
       "@data/*": ["./data/*"],
+      "@components/*": ["./src/components/*"],
     }
   }
 }
