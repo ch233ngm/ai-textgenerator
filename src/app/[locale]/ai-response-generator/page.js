@@ -15,7 +15,7 @@ export default function AIResponseGenerator() {
         'Assertive',
         'Apologetic',
         'Appreciative',
-        'Informative'
+        'Humorous'
     ];
 
     const counterpartOptions = [
@@ -32,7 +32,7 @@ export default function AIResponseGenerator() {
     const [rangeValue, setRangeValue] = useState(30);
     const [isGenerating, setIsGenerating] = useState(false);
     const [messageLength, setMessageLength] = useState(0);
-
+    const [inputText, setInputText] = useState('');
     const handleRangeChange = (value) => {
         const newValue = Math.min(Math.max(parseInt(value) || 20, 20), 500);
         setRangeValue(newValue);
@@ -43,7 +43,7 @@ export default function AIResponseGenerator() {
         // 这里添加生成响应的逻辑
         // 获取用户输入的数据
         let requestData = {
-            // message: inputText,
+            message: inputText,
             responseLength: rangeValue,
             counterpart: selectedCounterpart,   
             scence : selectedScene,
@@ -91,7 +91,11 @@ export default function AIResponseGenerator() {
                                     scrollbarColor: 'rgba(155, 155, 155, 0.1) transparent'
                                 }}
                                 placeholder="Example: I'm thrilled with the recent updates to your software. It has significantly improved my workflow, and I appreciate the new features. However, I noticed a small bug when trying to export data. Could this be looked into?"
-                                onChange={(e) => setMessageLength(e.target.value.length)}
+                                onChange={(e) => {
+                                    setMessageLength(e.target.value.length);
+                                    setInputText(e.target.value);
+                                }}
+                                value={inputText}
                                 maxLength={2000}
                             ></textarea>
                         </label>
