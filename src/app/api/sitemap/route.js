@@ -8,6 +8,7 @@ export async function GET() {
       { loc: '/en', lastmod: currentDate, changefreq: 'daily', priority: 1.0 },
       { loc: '/zh', lastmod: currentDate, changefreq: 'daily', priority: 1.0 },
       { loc: '/fr', lastmod: currentDate, changefreq: 'daily', priority: 1.0 },
+      { loc: '/en/ai-response-generator', lastmod: currentDate, changefreq: 'weekly', priority: 0.9 },
       { loc: '/en/ai-text-generator', lastmod: currentDate, changefreq: 'weekly', priority: 0.8 },
       { loc: '/zh/ai-text-generator', lastmod: currentDate, changefreq: 'weekly', priority: 0.8 },
       { loc: '/fr/ai-text-generator', lastmod: currentDate, changefreq: 'weekly', priority: 0.8 },
@@ -31,12 +32,14 @@ export async function GET() {
          const slug = path.parse(file).name;
  
          ['en','zh'].forEach(lang => {
-             pages.push({
-                 loc: `/${lang}/blog/${slug}`,
-                 lastmod: lastModified,
-                 changefreq: 'weekly',
-                 priority: 0.7
-             });
+             if (slug !== 'ai-response-generator') {
+                 pages.push({
+                     loc: `/${lang}/blog/${slug}`,
+                     lastmod: lastModified,
+                     changefreq: 'weekly',
+                     priority: 0.7
+                 });
+             }
          });
      });
   
