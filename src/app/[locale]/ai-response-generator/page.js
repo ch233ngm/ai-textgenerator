@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import RadioGroup from '@/components/RadioGroup';
+import AIResponseChat from '@/components/AIResponsechat';
 export default function AIResponseGenerator() {
-    const radioOptions = [
+    const sceneOptions = [
         'Professional',
         'Friendly',
         'Formal',
@@ -15,7 +16,7 @@ export default function AIResponseGenerator() {
         'Informative'
     ];
 
-    const audienceOptions = [
+    const counterpartOptions = [
         'Friends',
         'Customers',
         'Colleagues',
@@ -26,20 +27,27 @@ export default function AIResponseGenerator() {
         "Others"
     ];
 
-    const [rangeValue, setRangeValue] = useState(40);
+    const [rangeValue, setRangeValue] = useState(30);
     const [isGenerating, setIsGenerating] = useState(false);
     const [messageLength, setMessageLength] = useState(0);
 
     const handleRangeChange = (value) => {
         const newValue = Math.min(Math.max(parseInt(value) || 20, 20), 500);
         setRangeValue(newValue);
-        console.log('Range value:', newValue);
     };
 
     const handleGenerate = () => {
         setIsGenerating(true);
         // 这里添加生成响应的逻辑
+        // 获取用户输入的数据
+        let requestData = {
+            message: inputText,
+            responseLength: rangeValue,
+            counterpart: counterpart,
+            scence : scence,
+        }
         // 完成后，记得设置 setIsGenerating(false)
+        setTimeout(() => setIsGenerating(false), 2000); // 模拟生成响应的假设
     };
 
     useEffect(() => {
@@ -89,13 +97,13 @@ export default function AIResponseGenerator() {
                             <span className='font-bold'>Scene</span>
                             <span className='text-gray-400 text-sm'>&nbsp;(optional)</span>
                         </div>
-                        <RadioGroup options={radioOptions} groupName={'response1'}/>
+                        <RadioGroup options={sceneOptions} groupName={'response1'}/>
                         <div className="divider"></div>
                         <div className=''>
-                            <span className='font-bold'>Audience</span>
+                            <span className='font-bold'>Counterpart</span>
                             <span className='text-gray-400 text-sm'>&nbsp;(optional)</span>
                         </div>
-                        <RadioGroup options={audienceOptions} groupName={'response2'}/>
+                        <RadioGroup options={counterpartOptions} groupName={'response2'}/>
                         <div className="divider  divider-secondary"></div>
                         <div className='pb-4 flex items-center justify-between'>
                             <span className='font-bold'>Response Length</span>
@@ -141,8 +149,19 @@ export default function AIResponseGenerator() {
                     </button>
                 </div>
                 <div className="divider md:divider-horizontal"></div>
-                <div className="card bg-base-300 rounded-box flex-grow md:flex-[7] flex items-center justify-center">
-
+                <div className="card bg-base-100 rounded-box flex-grow md:flex-[7] flex items-start p-4 h-[calc(100vh-var(--navbar-height)-2rem)] overflow-y-auto">
+                {isGenerating?(
+                    <div className="flex w-full flex-col gap-4">
+                        <div className="skeleton h-40 w-full"></div>
+                        <div className="skeleton h-5 w-3/4"></div>
+                        <div className="skeleton h-5 w-5/6"></div>
+                        <div className="skeleton h-5 w-full"></div>
+                        <div className="skeleton h-5 w-2/3"></div>
+                    </div>) : (
+                        // 这里添加生成的响应的 UI
+                        // 完成后，记得返回 JSX
+                        <AIResponseChat/>
+                    )}
                 </div>
             </div>
         </div>
