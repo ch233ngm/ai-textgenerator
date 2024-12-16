@@ -1,4 +1,5 @@
 import Navigation from '../../components/nav/Navigation'
+import Footer from '../../components/Footer'
 import '../globals.css'
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
@@ -39,6 +40,7 @@ export default async function RootLayout({ children, params }) {
               {children}
             </NextIntlClientProvider>
           </main>
+          <Footer />
           <GoogleAnalytics />
         </body>
       </html>

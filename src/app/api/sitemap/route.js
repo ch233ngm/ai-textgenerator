@@ -5,14 +5,20 @@ export async function GET() {
     const domain = 'https://ai-textgenerator.net';
     const currentDate = new Date().toISOString().split('T')[0];
     const pages = [
-      { loc: '/en', lastmod: '2024-12-14', changefreq: 'daily', priority: 1.0 },
-      { loc: '/zh', lastmod: '2024-12-14', changefreq: 'daily', priority: 1.0 },
-      { loc: '/fr', lastmod: '2024-12-15', changefreq: 'daily', priority: 1.0 },
-      { loc: '/en/ai-text-generator', lastmod: '2024-12-14', changefreq: 'weekly', priority: 0.8 },
-      { loc: '/zh/ai-text-generator', lastmod: '2024-12-14', changefreq: 'weekly', priority: 0.8 },
-      { loc: '/fr/ai-text-generator', lastmod: '2024-12-15', changefreq: 'weekly', priority: 0.8 },
+      { loc: '/en', lastmod: currentDate, changefreq: 'daily', priority: 1.0 },
+      { loc: '/zh', lastmod: currentDate, changefreq: 'daily', priority: 1.0 },
+      { loc: '/fr', lastmod: currentDate, changefreq: 'daily', priority: 1.0 },
+      { loc: '/en/ai-text-generator', lastmod: currentDate, changefreq: 'weekly', priority: 0.8 },
+      { loc: '/zh/ai-text-generator', lastmod: currentDate, changefreq: 'weekly', priority: 0.8 },
+      { loc: '/fr/ai-text-generator', lastmod: currentDate, changefreq: 'weekly', priority: 0.8 },
       { loc: '/en/blog', lastmod: currentDate, changefreq: 'daily', priority: 0.8 },
-    ];
+      { loc: '/en/privacy-policy', lastmod: currentDate, changefreq: 'monthly', priority: 0.5 },
+      { loc: '/zh/privacy-policy', lastmod: currentDate, changefreq: 'monthly', priority: 0.5 },
+      { loc: '/fr/privacy-policy', lastmod: currentDate, changefreq: 'monthly', priority: 0.5 },
+      { loc: '/en/contact', lastmod: currentDate, changefreq: 'monthly', priority: 0.7 },
+      { loc: '/zh/contact', lastmod: currentDate, changefreq: 'monthly', priority: 0.7 },
+      { loc: '/fr/contact', lastmod: currentDate, changefreq: 'monthly', priority: 0.7 },
+    ]
 
      // 动态添加博客文章
      const blogDir = path.join(process.cwd(), 'data', 'blog');

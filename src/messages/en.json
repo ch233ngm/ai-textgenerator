@@ -48,5 +48,31 @@
         "aiTextGeneratorApplications": "AI text generator technology finds applications across numerous fields. In content marketing, an AI text generator can help create engaging blog posts, social media content, and product descriptions. For academic purposes, it can assist in research writing and literature reviews. In the business world, an AI text generator can be used for drafting reports, creating presentations, and composing professional emails. Writers and journalists can use an AI text generator for brainstorming ideas and overcoming writer's block. Additionally, an AI text generator can be valuable in e-learning platforms for generating educational content and in customer service for crafting responses to inquiries.",
         "popularAITextGenerators": "What are some popular AI Text Generators?",
         "aiTextGeneratorExamples": "There are several prominent AI text generator tools available today. OpenAI's GPT-3 is one of the most advanced AI text generator models, known for its versatility and high-quality output. Other notable AI text generator options include GPT-J, an open-source alternative, and BERT, which excels in understanding context. Jasper AI is a popular AI text generator for marketing content, while Copy.ai focuses on generating various types of copy. Writesonic is another AI text generator that specializes in long-form content. These AI text generator tools, along with others like Rytr and Inferkit, offer unique features and capabilities, catering to different user needs in the realm of AI-powered text generation."
+    },
+    "PrivacyPolicy": {
+        "title": "Privacy Policy",
+        "intro": "At AI Text Generator, we are committed to protecting your privacy. This Privacy Policy explains our practices regarding the collection and use of information on our website.",
+        "dataCollection": {
+            "title": "Data Collection",
+            "content": "We do not collect any personal data from our users. Our AI Text Generator operates without storing or processing any user information. You can use our service with complete anonymity."
+        },
+        "contact": {
+            "title": "Contact Us",
+            "content": "If you have any questions about this Privacy Policy or our practices, please don't hesitate to reach out to us.",
+            "linkText": "Visit our Contact Page"
+        }
+    },
+    "Contact": {
+        "title": "Contact Us",
+        "description": "Have a question or feedback? We'd love to hear from you. Fill out the form below and we'll get back to you as soon as possible.",
+        "form": {
+            "name": "Name",
+            "email": "Email",
+            "message": "Message",
+            "submit": "Send Message",
+            "submitSuccess": "Thank you for your message. We'll get back to you soon!",
+            "emailRequired": "Email is required",
+            "submitError": "Failed to submit form. Please try again."
+        }
     }
 }

@@ -48,5 +48,31 @@
         "aiTextGeneratorApplications": "La technologie de génération de texte IA trouve des applications dans de nombreux domaines. Dans le marketing de contenu, un générateur de texte IA peut aider à créer des articles de blog, du contenu sur les réseaux sociaux et des descriptions de produits attrayants. À des fins académiques, il peut aider à la rédaction de recherches et à des revues de littérature. Dans le monde des affaires, un générateur de texte IA peut être utilisé pour rédiger des rapports, créer des présentations et rédiger des e-mails professionnels. Les écrivains et les journalistes peuvent utiliser un générateur de texte IA pour réfléchir à des idées et surmonter le blocage de l'écrivain. De plus, un générateur de texte IA peut s’avérer utile sur les plateformes d’apprentissage en ligne pour générer du contenu éducatif et dans le service client pour élaborer des réponses aux demandes de renseignements.",
         "popularAITextGenerators": "Quels sont les générateurs de texte IA populaires ?",
         "aiTextGeneratorExamples": "Il existe aujourd’hui plusieurs outils de génération de texte IA de premier plan. Le GPT-3 d'OpenAI est l'un des modèles de générateur de texte IA les plus avancés, connu pour sa polyvalence et sa sortie de haute qualité. D'autres options notables de générateur de texte IA incluent GPT-J, une alternative open source, et BERT, qui excelle dans la compréhension du contexte. Jasper AI est un générateur de texte IA populaire pour le contenu marketing, tandis que Copy.ai se concentre sur la génération de différents types de copies. Writesonic est un autre générateur de texte IA spécialisé dans le contenu long. Ces outils de génération de texte IA, ainsi que d'autres comme Rytr et Inferkit, offrent des fonctionnalités et des capacités uniques, répondant aux différents besoins des utilisateurs dans le domaine de la génération de texte basée sur l'IA."
+    },
+    "PrivacyPolicy": {
+        "title": "Politique de confidentialité",
+        "intro": "Chez AI Text Generator, nous nous engageons à protéger votre vie privée. Cette politique de confidentialité explique nos pratiques concernant la collecte et l'utilisation des informations sur notre site web.",
+        "dataCollection": {
+            "title": "Collecte de données",
+            "content": "Nous ne collectons aucune donnée personnelle de nos utilisateurs. Notre générateur de texte AI fonctionne sans stocker ni traiter aucune information utilisateur. Vous pouvez utiliser notre service en toute anonymité."
+        },
+        "contact": {
+            "title": "Contactez-nous",
+            "content": "Si vous avez des questions sur cette politique de confidentialité ou nos pratiques, n'hésitez pas à nous contacter.",
+            "linkText": "Visitez notre page de contact"
+        }
+    },
+    "Contact": {
+        "title": "Contactez-nous",
+        "description": "Vous avez une question ou des commentaires ? Nous aimerions vous entendre. Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.",
+        "form": {
+            "name": "Nom",
+            "email": "E-mail",
+            "message": "Message",
+            "submit": "Envoyer le message",
+            "submitSuccess": "Merci pour votre message. Nous vous répondrons bientôt !",
+            "emailRequired": "L'adresse e-mail est obligatoire",
+            "submitError": "Échec de l'envoi du formulaire. Veuillez réessayer."
+        }
     }
 }
