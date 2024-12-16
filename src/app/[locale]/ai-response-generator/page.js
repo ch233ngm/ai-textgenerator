@@ -19,38 +19,56 @@ export default function AIResponseGenerator() {
     ];
 
     const counterpartOptions = [
-        'Friends',
-        'Customers',
-        'Colleagues',
+        'Friend',
         'Partner',
+        'Colleague',
+        'Lover',
         'Family',
-        'Superiors',
-        'Stakeholders',
-        "Others"
+        'Superior',
+        'Stakeholder'
     ];
 
     const [rangeValue, setRangeValue] = useState(30);
     const [isGenerating, setIsGenerating] = useState(false);
     const [messageLength, setMessageLength] = useState(0);
+    const [reply, setReply] = useState("I hate you!");
     const [inputText, setInputText] = useState('');
     const handleRangeChange = (value) => {
-        const newValue = Math.min(Math.max(parseInt(value) || 20, 20), 500);
-        setRangeValue(newValue);
+        setRangeValue(value);
     };
 
-    const handleGenerate = () => {
+    const handleGenerate = async () => {
         setIsGenerating(true);
-        // 这里添加生成响应的逻辑
-        // 获取用户输入的数据
+        setReply(null);
         let requestData = {
             message: inputText,
             responseLength: rangeValue,
-            counterpart: selectedCounterpart,   
+            counterpart: selectedCounterpart === 'Superior' ? 'staff' : selectedCounterpart,   
             scence : selectedScene,
         }
-        console.log('requestData:', requestData);
-        // 完成后，记得设置 setIsGenerating(false)
-        setTimeout(() => setIsGenerating(false), 2000); // 模拟生成响应的假设
+        try {
+            const result = await fetch(`${process.env.NEXT_PUBLIC_BASIC_URL}/api/airesponsegenerator`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(requestData),
+            })
+            setTimeout(() => setIsGenerating(false), 2000); 
+
+            const data = await result.json();
+            if (!data?.response) {
+                setIsGenerating(false);
+                setReply("Sorry, I can't generate a response right now. Please try again later.");
+                return;
+            } else {
+                setReply(data.response);
+                setIsGenerating(false);
+            }
+        } catch (error) {
+            setIsGenerating(false);
+            setReply("Sorry, I can't generate a response right now. Please try again later.");
+        }
     };
 
     useEffect(() => {
@@ -119,24 +137,25 @@ export default function AIResponseGenerator() {
                             options={counterpartOptions}
                             groupName={'response2'}
                             selectedOption={selectedCounterpart}
-                            onChange={(value) => setSelectedCounterpart(value)}
+                            onChange={(value) => {setSelectedCounterpart(value);
+                            }}
                         />
                         <div className="divider  divider-secondary"></div>
                         <div className='pb-4 flex items-center justify-between'>
-                            <span className='font-bold'>Response Length</span>
+                            <span className='font-bold'>Response Length Limit</span>
                             <input
                                 type="text"
                                 value={rangeValue}
                                 onChange={(e) => handleRangeChange(e.target.value)}
                                 size={rangeValue.toString().length}
-                                className="input input-bordered input-info input-xs ml-2 min-w-[40px] text-center"
+                                className="input input-bordered input-info input-xs ml-2 max-w-[40px] text-center"
                             />
                         </div>
                         <input
                             type="range"
-                            min="20"
-                            max="500"
-                            defaultValue="50"
+                            min="5"
+                            max="200"
+                            defaultValue="30"
                             className="range range-info"
                             onChange={(e) => handleRangeChange(e.target.value)}
                         />
@@ -175,9 +194,7 @@ export default function AIResponseGenerator() {
                         <div className="skeleton h-5 w-full"></div>
                         <div className="skeleton h-5 w-2/3"></div>
                     </div>) : (
-                        // 这里添加生成的响应的 UI
-                        // 完成后，记得返回 JSX
-                        <AIResponseChat/>
+                        <AIResponseChat reply={reply} counterpart={selectedCounterpart} inputText={inputText}/>
                     )}
                 </div>
             </div>
