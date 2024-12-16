@@ -22,6 +22,7 @@ export default function Footer() {
             <nav>
                 <h6 className="footer-title">Features</h6>
                 <Link href="/ai-text-generator" className="link link-hover">AI Text Generator</Link>
+                <Link href="/" className="link link-hover">Home</Link>
                 <Link href="/blog" className="link link-hover">Blog</Link>
             </nav>
             <nav>
