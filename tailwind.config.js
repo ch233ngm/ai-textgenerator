@@ -68,7 +68,11 @@ module.exports = {
       }),
     },
   },
-  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography'), require("daisyui")],
+  plugins: [require('@tailwindcss/forms'), 
+    require('@tailwindcss/typography'), 
+    require("daisyui"),
+    require('tailwind-scrollbar-hide'),
+  ],
   safelist: [
     {
       pattern: /^min-h-\[.+\]$/,

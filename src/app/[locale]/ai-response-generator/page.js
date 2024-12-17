@@ -81,7 +81,7 @@ export default async function Page(props) {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "AI Response Generator",
-        "applicationCategory": "UtilitiesApplication",
+        "applicationCategory": "TextGeneration",
         "operatingSystem": "Web",
         "description": "AI tool for personalized responses based on context, relationship, and input. Enhance communication across various scenarios.",
         "offers": {
@@ -93,11 +93,6 @@ export default async function Page(props) {
         // "image": "",
         "datePublished": "2024-12-16",
         // "dateModified": modifiedAt,
-        "provider": {
-            "@type": "Organization",
-            "name": siteMetadata.title,
-            "url": siteMetadata.siteUrl
-        }
     };
 
     return (

@@ -89,6 +89,9 @@ importers:
       remark-math:
         specifier: ^6.0.0
         version: 6.0.0
+      tailwind-scrollbar-hide:
+        specifier: ^1.1.7
+        version: 1.1.7
     devDependencies:
       postcss:
         specifier: ^8
@@ -2611,6 +2614,9 @@ packages:
   sync-fetch@0.4.5:
     resolution: {integrity: sha512-esiWJ7ixSKGpd9DJPBTC4ckChqdOjIwJfYhVHkcQ2Gnm41323p1TRmEI+esTQ9ppD+b5opps2OTEGTCGX5kF+g==, tarball: https://registry.npmmirror.com/sync-fetch/-/sync-fetch-0.4.5.tgz}
     engines: {node: '>=14'}
+
+  tailwind-scrollbar-hide@1.1.7:
+    resolution: {integrity: sha512-X324n9OtpTmOMqEgDUEA/RgLrNfBF/jwJdctaPZDzB3mppxJk7TLIDmOreEDm1Bq4R9LSPu4Epf8VSdovNU+iA==, tarball: https://registry.npmmirror.com/tailwind-scrollbar-hide/-/tailwind-scrollbar-hide-1.1.7.tgz}
 
   tailwindcss@3.4.16:
     resolution: {integrity: sha512-TI4Cyx7gDiZ6r44ewaJmt0o6BrMCT5aK5e0rmJ/G9Xq3w7CX/5VXl/zIPEJZFUK5VEqwByyhqNPycPlvcK4ZNw==, tarball: https://registry.npmmirror.com/tailwindcss/-/tailwindcss-3.4.16.tgz}
@@ -6040,6 +6046,8 @@ snapshots:
       node-fetch: 2.7.0
     transitivePeerDependencies:
       - encoding
+
+  tailwind-scrollbar-hide@1.1.7: {}
 
   tailwindcss@3.4.16:
     dependencies:

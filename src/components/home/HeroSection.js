@@ -61,11 +61,33 @@ export default function HeroSection() {
     };
   }, [t]);
   const handleGetStarted = () => {
-      router.push('/ai-text-generator');
+    router.push('/ai-text-generator');
   };
+  useEffect(() => {
+    const updateNavbarHeight = () => {
+      const navbar = document.querySelector('.navbar');
+      if (navbar) {
+        const height = navbar.offsetHeight;
+        document.documentElement.style.setProperty('--navbar-height', `${height-4}px`);
+      }
+    };
+
+    updateNavbarHeight();
+    window.addEventListener('resize', updateNavbarHeight);
+
+    return () => {
+      window.removeEventListener('resize', updateNavbarHeight);
+    };
+
+  }, []);
+
   return (
-    <div className="hero bg-base-200 min-h-screen">
-      <div className="hero-content flex-col lg:flex-row-reverse">
+    <div className="hero bg-base-200 min-h-[calc(100vh-var(--navbar-height))]"
+    style={{
+      backgroundImage: "url(/static/images/hero.jpg)",
+    }}>
+      <div className="hero-overlay bg-opacity-60"></div>
+      <div className="hero-content flex-col lg:flex-row-reverse text-neutral-content">
         <div className="mockup-code">
           <pre data-prefix="$"><code>{displayText1}</code></pre>
           <pre data-prefix=">" className="text-warning"><code>{displayText2}</code></pre>

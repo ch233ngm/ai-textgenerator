@@ -1,5 +1,6 @@
 import HeroSection from '@/components/home/HeroSection';
 import { getTranslations } from 'next-intl/server';
+// import LandingContent from './landingcontent';
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
@@ -19,13 +20,57 @@ export async function generateMetadata({ params }) {
         'fr': `${baseUrl}/fr`,
       },
     },
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      siteName: 'A Free AI Text Generator, No Login!',
+      locale: 'en_US',
+      type: 'website',
+      publishedTime: '2024-12-12',
+      modifiedTime: '2024-12-17',
+      url: canonicalUrl, // canonical url
+      images: [`${baseUrl}/static/images/hero.jpg`], 
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: canonicalUrl,
+      title: t('title'),
+      description: t('description'),
+      images: [`${baseUrl}/static/images/hero.jpg`], 
+    },
   };
 }
 export default function Home() {
-  return (
-    <div className="min-h-screen bg-gray-100">
-     <HeroSection/>
+  const baseUrl = 'https://ai-textgenerator.net';
 
-    </div>
+  let jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "AI Text Generator",
+    "applicationCategory": "TextGeneration",
+    "operatingSystem": "Web",
+    "description": "Free AI tools: Text Generator creates original content, Response Generator crafts contextual replies. Enhance writing and communication effortlessly.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "url": "https://ai-textgenerator.net",
+    "image": `${baseUrl}/static/images/hero.jpg`, 
+    "datePublished": "2024-12-12",
+    "dateModified": new Date().toISOString().split('T')[0],
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className="bg-gray-100">
+        <HeroSection />
+        {/* <LandingContent/> */}
+      </div>
+    </>
   );
 }
