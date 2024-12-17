@@ -14,37 +14,37 @@ export default function HeroSection() {
   const [displayText4, setDisplayText4] = useState('');
 
   useEffect(() => {
-    const text1 = t("showPrompt");
-    const text2 = t("showPrompt1");
-    const text3 = t("showPrompt2");
-    const text4 = t("showPrompt3");
+    const text1 = t("showPrompt").trim();
+    const text2 = t("showPrompt1").trim();
+    const text3 = t("showPrompt2").trim();
+    const text4 = t("showPrompt3").trim();
     if (displayText1 != '') return;
-    let i = 0;
+    let i = -1;
     const timer1 = setInterval(() => {
-      if (i < text1.length - 1) {
-        setDisplayText1(prev => prev + text1[i]);
+      if (i < text1.length-1) {
         i++;
+        setDisplayText1(pre => pre + text1[i]);
       } else {
         clearInterval(timer1);
-        let j = 0;
+        let j = -1;
         const timer2 = setInterval(() => {
           if (j < text2.length - 1) {
-            setDisplayText2(prev => prev + text2[j]);
             j++;
+            setDisplayText2(prev => prev + text2[j]);
           } else {
             clearInterval(timer2);
-            let k = 0;
+            let k = -1;
             const timer3 = setInterval(() => {
               if (k < text3.length - 1) {
-                setDisplayText3(prev => prev + text3[k]);
                 k++;
+                setDisplayText3(prev => prev + text3[k]);
               } else {
                 clearInterval(timer3);
-                let k = 0;
+                let k = -1;
                 const timer4 = setInterval(() => {
                   if (k < text4.length - 1) {
-                    setDisplayText4(prev => prev + text4[k]);
                     k++;
+                    setDisplayText4(prev => prev + text4[k]);
                   } else {
                     clearInterval(timer4);
                   }
@@ -89,10 +89,10 @@ export default function HeroSection() {
       <div className="hero-overlay bg-opacity-60"></div>
       <div className="hero-content flex-col lg:flex-row-reverse text-neutral-content">
         <div className="mockup-code">
-          <pre data-prefix="$"><code>{displayText1}</code></pre>
-          <pre data-prefix=">" className="text-warning"><code>{displayText2}</code></pre>
-          <pre data-prefix=">" className="text-success"><code>{displayText3}</code></pre>
-          <pre data-prefix=">" className="text-warning"><code>{displayText4}</code></pre>
+          <pre data-prefix="$" className="text-xs sm:text-sm md:text-base"><code>{displayText1}</code></pre>
+          <pre data-prefix=">" className="text-xs sm:text-sm md:text-base text-warning"><code>{displayText2}</code></pre>
+          <pre data-prefix=">" className="text-xs sm:text-sm md:text-base text-success"><code>{displayText3}</code></pre>
+          <pre data-prefix=">" className="text-xs sm:text-sm md:text-base text-warning"><code>{displayText4}</code></pre>
         </div>
         <div>
           <h1 className="text-5xl font-bold">{t('heroH1')}</h1>
