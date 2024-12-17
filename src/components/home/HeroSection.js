@@ -84,7 +84,7 @@ export default function HeroSection() {
   return (
     <div className="hero bg-base-200 min-h-[calc(100vh-var(--navbar-height))]"
     style={{
-      backgroundImage: "url(/static/images/hero.jpg)",
+      backgroundImage: "url(/static/images/hero.webp)",
     }}>
       <div className="hero-overlay bg-opacity-60"></div>
       <div className="hero-content flex-col lg:flex-row-reverse text-neutral-content">

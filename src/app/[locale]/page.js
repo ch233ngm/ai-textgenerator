@@ -29,14 +29,14 @@ export async function generateMetadata({ params }) {
       publishedTime: '2024-12-12',
       modifiedTime: '2024-12-17',
       url: canonicalUrl, // canonical url
-      images: [`${baseUrl}/static/images/hero.jpg`], 
+      images: [`${baseUrl}/static/images/hero.webp`], 
     },
     twitter: {
       card: 'summary_large_image',
       site: canonicalUrl,
       title: t('title'),
       description: t('description'),
-      images: [`${baseUrl}/static/images/hero.jpg`], 
+      images: [`${baseUrl}/static/images/hero.webp`], 
     },
   };
 }
@@ -56,7 +56,7 @@ export default function Home() {
       "priceCurrency": "USD"
     },
     "url": "https://ai-textgenerator.net",
-    "image": `${baseUrl}/static/images/hero.jpg`, 
+    "image": `${baseUrl}/static/images/hero.webp`, 
     "datePublished": "2024-12-12",
     "dateModified": new Date().toISOString().split('T')[0],
   };
