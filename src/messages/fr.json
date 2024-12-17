@@ -13,6 +13,8 @@
         "showPrompt2": "Parlez-moi de vous !",
         "showPrompt3": "Je suis un générateur de texte AI gratuit...",
         "title": "Générateur de texte AI (gratuit, sans connexion !)",
+        "textTool": "Générateur de texte IA",
+        "responseTool": "Générateur de réponses IA",
         "description": "Générez du texte créatif, des articles et bien plus encore avec notre générateur de texte AI, aucune connexion requise ! Gratuit, aucune inscription requise. Ne manquez pas votre voyage créatif !"
     },
     "AITextGenerator": {

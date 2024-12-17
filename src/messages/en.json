@@ -13,6 +13,8 @@
         "showPrompt2": "  Tell me all about you!",
         "showPrompt3": "  I'm a Free AI Text Generator...",
         "title": "AI Text Generator (Free, No Login!)",
+        "textTool": "AI text generator",
+        "responseTool": "AI response generator",
         "description": "Generate creative text, articles, and more with our AI Text Generator, no login needed! Free, no sign-up required. Don't miss out on your creative journey!"
     },
     "AITextGenerator": {

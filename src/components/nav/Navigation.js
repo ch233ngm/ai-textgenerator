@@ -2,7 +2,7 @@ import { Link } from 'next-view-transitions';
 import LanguageSwitcher from './LanguageSwitcher';
 import NotificationBellWrapper from './NotificationBellWrapper';
 import { useTranslations } from 'next-intl';
-import { HomeIcon, FaceSmileIcon, NewspaperIcon, PencilIcon } from '@heroicons/react/24/outline';
+import { HomeIcon, FaceSmileIcon, NewspaperIcon, PencilIcon, WrenchScrewdriverIcon } from '@heroicons/react/24/outline';
 
 export default function Navigation() {
     const t = useTranslations('Index');
@@ -18,16 +18,33 @@ export default function Navigation() {
                         </label>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                             <li><Link href="/"><HomeIcon className="h-5 w-5 mr-2" />{t('Home')}</Link></li>
-                            {/* <li><Link href="/feature"><SparklesIcon className="h-5 w-5 mr-2" />{t('Features')}</Link></li> */}
+                            <li>
+                                <details>
+                                    <summary><WrenchScrewdriverIcon className="h-5 w-5 mr-2" />Tools</summary>
+                                    <ul className="p-2 bg-base-100 rounded-t-none">
+                                        <li><Link href="/ai-text-generator">{t('textTool')}</Link></li>
+                                        <li><Link href="/ai-response-generator">{t('responseTool')}</Link></li>
+                                    </ul>
+                                </details>
+                            </li>
                             <li><Link href="/blog"><NewspaperIcon className="h-5 w-5 mr-2" />{t('Blog')}</Link></li>
                             <li><Link href="/blog/about"><FaceSmileIcon className="h-5 w-5 mr-2" />{t('About')}</Link></li>
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl" href='/ai-text-generator'>AI-Text<PencilIcon className="h-5 w-5 mr-2"/></a>
+                    <a className="btn btn-ghost normal-case text-xl" href='/ai-text-generator'>AI-Text<PencilIcon className="h-5 w-5 mr-2" /></a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         <li><Link href="/"><HomeIcon className="h-5 w-5 mr-2" />{t('Home')}</Link></li>
+                        <li>
+                            <details className="dropdown w-48">
+                                <summary><WrenchScrewdriverIcon className="h-5 w-5 mr-2" />AI Text Tools</summary>
+                                <ul className="p-2 bg-base-100 rounded-t-none">
+                                    <li><Link href="/ai-text-generator">{t('textTool')}</Link></li>
+                                    <li><Link href="/ai-response-generator">{t('responseTool')}</Link></li>
+                                </ul>
+                            </details>
+                        </li>
                         <li><Link href="/blog"><NewspaperIcon className="h-5 w-5 mr-2" />{t('Blog')}</Link></li>
                         <li><Link href="/blog/about"><FaceSmileIcon className="h-5 w-5 mr-2" />{t('About')}</Link></li>
                     </ul>
