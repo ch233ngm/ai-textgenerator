@@ -95,7 +95,7 @@ export default function AIResponseGenerator() {
         <div className="min-h-[calc(100vh-var(--navbar-height))] py-4 sm:py-6 px-4 sm:px-6 md:px-8 lg:px-12 flex flex-row md:flex-col">
             <div className="flex-grow md:flex">
                 <div className="card bg-base-100 rounded-box flex-grow md:flex-[4] flex p-4 sm:p-6 lg:p-8 relative">
-                    <div className='max-h-[calc(100vh-var(--navbar-height)-8rem)] px-3' style={{overflowY: 'auto', scrollbarWidth: 'none', msOverflowStyle: 'none'}} onScroll={(e) => e.target.style.setProperty('--scroll', `${e.target.scrollTop}`)}>
+                    <div className='md:max-h-[calc(100vh-var(--navbar-height)-8rem)] px-3 pb-4' style={{overflowY: 'auto', scrollbarWidth: 'none', msOverflowStyle: 'none'}} onScroll={(e) => e.target.style.setProperty('--scroll', `${e.target.scrollTop}`)}>
                         <label className="form-control">
                             <div className="label">
                                 <span className="label-text font-bold">Message</span>
