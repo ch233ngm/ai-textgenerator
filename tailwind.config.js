@@ -10,6 +10,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      scale: {
+        '108': '1.08',
+      },
       fontFamily: {
         sans: ['var(--font-space-grotesk)', ...fontFamily.sans],
       },

@@ -92,7 +92,9 @@ export default function HeroSection() {
             <p className="py-6 font-mono">
               {t('heroP')}<br /> {t('heroP2')}
             </p>
-            <button className="btn btn-primary" onClick={handleGetStarted}>Get Started</button>
+            <div className="flex justify-center lg:justify-start">
+              <button className="btn btn-primary" onClick={handleGetStarted}>Get Started</button>
+            </div>
           </div>
         </div>
       </div>

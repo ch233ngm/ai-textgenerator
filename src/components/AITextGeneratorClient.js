@@ -18,7 +18,11 @@ export default function AITextGeneratorClient() {
 
     const handleGenerate = async () => {
         setIsGenerating(true);
-
+        if (inputText.trim() === '') {
+            alert("Please enter some text to generate AI text.");
+            setIsGenerating(false);
+            return;
+        }
         const result = await fetch(`${process.env.NEXT_PUBLIC_API_URL}`, {
             method: 'POST',
             headers: {
@@ -78,7 +82,7 @@ export default function AITextGeneratorClient() {
                             <button
                                 className="btn btn-primary"
                                 onClick={handleGenerate}
-                                disabled={isGenerating || !inputText}
+                                disabled={isGenerating}
                             >
                                 {t('generate')}
                             </button>
@@ -124,7 +128,7 @@ export default function AITextGeneratorClient() {
                                     id="copyBtn"
                                     className="btn btn-secondary"
                                     onClick={handleCopy}
-                                    disabled={isGenerating || !outputText}
+                                    disabled={isGenerating}
                                 >
                                     <DocumentDuplicateIcon className="h-5 w-5 mr-2" />
                                     {t('copy')}

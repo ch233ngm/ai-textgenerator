@@ -1,6 +1,7 @@
 import HeroSection from '@/components/home/HeroSection';
+import FloatingNav from '@/components/home/FloatingNav';
 import { getTranslations } from 'next-intl/server';
-// import LandingContent from './landingcontent';
+import LandingContent from './landingcontent';
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
@@ -29,14 +30,14 @@ export async function generateMetadata({ params }) {
       publishedTime: '2024-12-12',
       modifiedTime: '2024-12-17',
       url: canonicalUrl, // canonical url
-      images: [`${baseUrl}/static/images/hero.webp`], 
+      images: [`${baseUrl}/static/images/hero.webp`, `${baseUrl}/static/images/feat.webp`],
     },
     twitter: {
       card: 'summary_large_image',
       site: canonicalUrl,
       title: t('title'),
       description: t('description'),
-      images: [`${baseUrl}/static/images/hero.webp`], 
+      images: [`${baseUrl}/static/images/hero.webp`, `${baseUrl}/static/images/feat.webp`],
     },
   };
 }
@@ -56,7 +57,7 @@ export default function Home() {
       "priceCurrency": "USD"
     },
     "url": "https://ai-textgenerator.net",
-    "image": `${baseUrl}/static/images/hero.webp`, 
+    "image": `${baseUrl}/static/images/hero.webp`,
     "datePublished": "2024-12-12",
     "dateModified": new Date().toISOString().split('T')[0],
   };
@@ -67,9 +68,14 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="bg-gray-100">
+      <div className="bg-gray-100 relative">
         <HeroSection />
-        {/* <LandingContent/> */}
+        <div className="relative z-10">
+          <FloatingNav />
+        </div>
+        <div className="relative -mt-16 pt-16">
+          <LandingContent />
+        </div>
       </div>
     </>
   );
