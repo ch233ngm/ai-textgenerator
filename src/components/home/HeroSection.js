@@ -21,7 +21,7 @@ export default function HeroSection() {
     if (displayText1 != '') return;
     let i = -1;
     const timer1 = setInterval(() => {
-      if (i < text1.length-1) {
+      if (i < text1.length - 1) {
         i++;
         setDisplayText1(pre => pre + text1[i]);
       } else {
@@ -63,45 +63,39 @@ export default function HeroSection() {
   const handleGetStarted = () => {
     router.push('/ai-text-generator');
   };
-  useEffect(() => {
-    const updateNavbarHeight = () => {
-      const navbar = document.querySelector('.navbar');
-      if (navbar) {
-        const height = navbar.offsetHeight;
-        document.documentElement.style.setProperty('--navbar-height', `${height-4}px`);
-      }
-    };
-
-    updateNavbarHeight();
-    window.addEventListener('resize', updateNavbarHeight);
-
-    return () => {
-      window.removeEventListener('resize', updateNavbarHeight);
-    };
-
-  }, []);
+  
 
   return (
-    <div className="hero bg-base-200 min-h-[calc(100vh-var(--navbar-height))]"
-    style={{
-      backgroundImage: "url(/static/images/hero.webp)",
-    }}>
-      <div className="hero-overlay bg-opacity-60"></div>
-      <div className="hero-content flex-col lg:flex-row-reverse text-neutral-content">
-        <div className="mockup-code">
-          <pre data-prefix="$" className="text-xs sm:text-sm md:text-base"><code>{displayText1}</code></pre>
-          <pre data-prefix=">" className="text-xs sm:text-sm md:text-base text-warning"><code>{displayText2}</code></pre>
-          <pre data-prefix=">" className="text-xs sm:text-sm md:text-base text-success"><code>{displayText3}</code></pre>
-          <pre data-prefix=">" className="text-xs sm:text-sm md:text-base text-warning"><code>{displayText4}</code></pre>
-        </div>
-        <div>
-          <h1 className="text-5xl font-bold">{t('heroH1')}</h1>
-          <p className="py-6 font-mono">
-            {t('heroP')}<br /> {t('heroP2')}
-          </p>
-          <button className="btn btn-primary" onClick={handleGetStarted}>Get Started</button>
+    <> <style jsx>{`
+      @keyframes slideBackground {
+        0% { background-position: 0% 0%; }
+        100% { background-position: 100% 100%; }
+      }
+    `}</style>
+      <div className="hero bg-base-200 min-h-screen"
+        style={{
+          backgroundImage: "url(/static/images/hero.webp)",
+          backgroundSize: "cover",
+          backgroundPosition: "top",
+          animation: "slideBackground  15s ease-in-out infinite alternate 2s",
+        }}>
+        <div className="hero-overlay bg-opacity-60"></div>
+        <div className="hero-content flex-col lg:flex-row-reverse text-neutral-content">
+          <div className="mockup-code">
+            <pre data-prefix="$" className="text-xs sm:text-sm md:text-base"><code>{displayText1}</code></pre>
+            <pre data-prefix=">" className="text-xs sm:text-sm md:text-base text-warning"><code>{displayText2}</code></pre>
+            <pre data-prefix=">" className="text-xs sm:text-sm md:text-base text-success"><code>{displayText3}</code></pre>
+            <pre data-prefix=">" className="text-xs sm:text-sm md:text-base text-warning"><code>{displayText4}</code></pre>
+          </div>
+          <div>
+            <h1 className="text-5xl font-bold">{t('heroH1')}</h1>
+            <p className="py-6 font-mono">
+              {t('heroP')}<br /> {t('heroP2')}
+            </p>
+            <button className="btn btn-primary" onClick={handleGetStarted}>Get Started</button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

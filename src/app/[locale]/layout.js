@@ -33,7 +33,9 @@ export default async function RootLayout({ children, params }) {
         <link rel="manifest" href="/static/favicons/site.webmanifest" />
         <body>
           <header>
-            <Navigation />
+            <NextIntlClientProvider messages={messages}>
+              <Navigation />
+            </NextIntlClientProvider>
           </header>
           <main>
             <NextIntlClientProvider messages={messages}>
