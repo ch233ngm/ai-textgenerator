@@ -7,31 +7,45 @@ export default function Home() {
   const [inputText, setInputText] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [height, setHeight] = useState('');
+  const [width, setWidth] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
     setIsLoading(true);
+
+    const parsedHeight = parseInt(height);
+    const parsedWidth = parseInt(width);
+
+    if (isNaN(parsedHeight) || isNaN(parsedWidth) || 
+        parsedHeight < 256 || parsedHeight > 2048 || 
+        parsedWidth < 256 || parsedWidth > 2048) {
+      setError('Height and width must be between 256 and 2048 pixels.');
+      setIsLoading(false);
+      return;
+    }
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_BASIC_URL}/api/text-to-image`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: inputText }),
+        body: JSON.stringify({ text: inputText, height: parsedHeight, width: parsedWidth }),
       });
       const data = await response.json();
       setImageUrl(data.url);
     } catch (error) {
       console.error('Error:', error);
+      setError('An error occurred while generating the image.');
     }
     setIsLoading(false);
   };
 
   return (
     <div className="min-h-screen bg-gray-100">
- 
-
       <main className="container mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold text-center mb-8">Text to Image Generator</h1>
-        
+
         <form onSubmit={handleSubmit} className="max-w-md mx-auto">
           <div className="mb-4">
             <label htmlFor="inputText" className="block text-sm font-medium text-gray-700 mb-2">
@@ -46,6 +60,37 @@ export default function Home() {
               required
             ></textarea>
           </div>
+          <div className="mb-4 flex space-x-4">
+            <div className="flex-1">
+              <label htmlFor="height" className="block text-sm font-medium text-gray-700 mb-2">
+                Height (px)
+              </label>
+              <input
+                id="height"
+                type="number"
+                className="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500"
+                value={height}
+                onChange={(e) => setHeight(e.target.value)}
+                placeholder="256-2048"
+                required
+              />
+            </div>
+            <div className="flex-1">
+              <label htmlFor="width" className="block text-sm font-medium text-gray-700 mb-2">
+                Width (px)
+              </label>
+              <input
+                id="width"
+                type="number"
+                className="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500"
+                value={width}
+                onChange={(e) => setWidth(e.target.value)}
+                placeholder="256-2048"
+                required
+              />
+            </div>
+          </div>
+          {error && <p className="text-red-500 mb-4">{error}</p>}
           <button
             type="submit"
             className="w-full btn btn-primary"
@@ -109,8 +154,7 @@ export default function Home() {
           </p>
         </section>
       </main>
-
-    
     </div>
   );
+
 }
