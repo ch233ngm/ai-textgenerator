@@ -72,6 +72,7 @@ export default function Navigation() {
                                     <ul className={isHomePage ? "p-2 bg-base-0 rounded-t-none" : "p-2 bg-base-100 rounded-t-none"}>
                                         <li><Link href="/ai-text-generator" onClick={() => handleLinkClick(mobileDetailsRef)}>{t('textTool')}</Link></li>
                                         <li><Link href="/ai-response-generator" onClick={() => handleLinkClick(mobileDetailsRef)}>{t('responseTool')}</Link></li>
+                                        <li role="menuitem"><Link href="/text-to-image" onClick={() => handleLinkClick(desktopDetailsRef)}>Text to Image</Link></li>
                                     </ul>
                                 </details>
                             </li>
@@ -92,6 +93,7 @@ export default function Navigation() {
                                 <ul className={isHomePage ? "p-2 bg-base-100/5 backdrop-blur-md rounded-t-none" : "p-2 bg-base-100 rounded-t-none"} role="menu">
                                     <li role="menuitem"><Link href="/ai-text-generator" onClick={() => handleLinkClick(desktopDetailsRef)}>{t('textTool')}</Link></li>
                                     <li role="menuitem"><Link href="/ai-response-generator" onClick={() => handleLinkClick(desktopDetailsRef)}>{t('responseTool')}</Link></li>
+                                    <li role="menuitem"><Link href="/text-to-image" onClick={() => handleLinkClick(desktopDetailsRef)}>Text to Image</Link></li>
                                 </ul>
                             </details>
                         </li>
