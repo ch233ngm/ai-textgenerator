@@ -9,6 +9,7 @@ export async function GET() {
       { loc: '/zh', lastmod: currentDate, changefreq: 'daily', priority: 1.0 },
       { loc: '/fr', lastmod: currentDate, changefreq: 'daily', priority: 1.0 },
       { loc: '/en/ai-response-generator', lastmod: currentDate, changefreq: 'weekly', priority: 0.9 },
+      { loc: '/en/text-to-image', lastmod: currentDate, changefreq: 'weekly', priority: 0.8 },
       { loc: '/en/ai-text-generator', lastmod: currentDate, changefreq: 'weekly', priority: 0.8 },
       { loc: '/zh/ai-text-generator', lastmod: currentDate, changefreq: 'weekly', priority: 0.8 },
       { loc: '/fr/ai-text-generator', lastmod: currentDate, changefreq: 'weekly', priority: 0.8 },
