@@ -7,8 +7,8 @@ export default function Home() {
   const [inputText, setInputText] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [height, setHeight] = useState('');
-  const [width, setWidth] = useState('');
+  const [height, setHeight] = useState(256);
+  const [width, setWidth] = useState(256);
   const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
@@ -60,36 +60,7 @@ export default function Home() {
               required
             ></textarea>
           </div>
-          <div className="mb-4 flex space-x-4">
-            <div className="flex-1">
-              <label htmlFor="width" className="block text-sm font-medium text-gray-700 mb-2">
-                Width (px)
-              </label>
-              <input
-                id="width"
-                type="number"
-                className="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500"
-                value={width}
-                onChange={(e) => setWidth(e.target.value)}
-                placeholder="256-2048"
-                required
-              />
-            </div>
-            <div className="flex-1">
-              <label htmlFor="height" className="block text-sm font-medium text-gray-700 mb-2">
-                Height (px)
-              </label>
-              <input
-                id="height"
-                type="number"
-                className="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500"
-                value={height}
-                onChange={(e) => setHeight(e.target.value)}
-                placeholder="256-2048"
-                required
-              />
-            </div>
-          </div>
+          
           {error && <p className="text-red-500 mb-4">{error}</p>}
           <button
             type="submit"
