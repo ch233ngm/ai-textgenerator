@@ -2,6 +2,8 @@ import { useTranslations } from 'next-intl';
 import WhyUseOurAITextGenerator from '../../../components/WhyUseOurAITextGenerator';
 import FrequentlyAskedQuestions from '../../../components/FrequentlyAskedQuestions';
 import AITextGeneratorClient from '../../../components/AITextGeneratorClient';
+import Banner_468_60 from '@/components/Banner_468_60';
+
 
 export async function generateMetadata({ params }) {
     const { locale } = await params;
@@ -33,6 +35,7 @@ export default function Home() {
             <AITextGeneratorClient/>
             <WhyUseOurAITextGenerator />
             <FrequentlyAskedQuestions />
+            <Banner_468_60/>
         </div>
     );
 }

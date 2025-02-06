@@ -1,4 +1,4 @@
 User-agent: *
-Disallow:
+Disallow: /adsterra/*
 
 Sitemap: https://ai-textgenerator.net/api/sitemap
