@@ -30,6 +30,8 @@ export default async function RootLayout({ children, params }) {
           sizes="16x16"
           href="/static/favicons/favicon-16x16.png"
         />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1167867040501073"
+     crossorigin="anonymous"></script>
         <link rel="manifest" href="/static/favicons/site.webmanifest" />
         <body>
           <header>
