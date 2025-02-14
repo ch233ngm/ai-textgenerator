@@ -30,6 +30,7 @@ export default async function RootLayout({ children, params }) {
           sizes="16x16"
           href="/static/favicons/favicon-16x16.png"
         />
+        <meta name="msvalidate.01" content="147FAF1BA47C381B71AF5E19AA1BCCEC" />
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1167867040501073"
      crossorigin="anonymous"></script>
         <link rel="manifest" href="/static/favicons/site.webmanifest" />
