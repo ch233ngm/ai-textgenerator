@@ -3,7 +3,6 @@ import WhyUseOurAITextGenerator from '../../../components/WhyUseOurAITextGenerat
 import FrequentlyAskedQuestions from '../../../components/FrequentlyAskedQuestions';
 import AITextGeneratorClient from '../../../components/AITextGeneratorClient';
 
-
 export async function generateMetadata({ params }) {
     const { locale } = await params;
     const baseUrl = 'https://ai-textgenerator.net';

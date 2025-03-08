@@ -3,7 +3,7 @@
 import { useState, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
 import { PencilIcon, LightBulbIcon, DocumentDuplicateIcon } from '@heroicons/react/24/outline';
-
+import Poll from './Poll';
 export default function AITextGeneratorClient() {
     const t = useTranslations('AITextGenerator');
 
@@ -110,7 +110,7 @@ export default function AITextGeneratorClient() {
                                     <span className="loading loading-ring loading-lg"></span>
                                     <span className="loading loading-ring loading-lg"></span>
                                 </div>
-                            ) : (
+                            ) : outputText ? (
                                 outputText.split('\n').map((line, lineIndex) => (
                                     <p key={lineIndex}>
                                         {line.split(' ').map((word, wordIndex) => (
@@ -120,6 +120,8 @@ export default function AITextGeneratorClient() {
                                         ))}
                                     </p>
                                 ))
+                            ) : (
+                                <Poll />
                             )}
                         </div>
                         <div className="card-actions justify-end">
