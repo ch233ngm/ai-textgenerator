@@ -12,7 +12,7 @@ export default function Poll() {
             }}>
             <div className="card-body p-4 sm:p-6">
                 <Link 
-                    href="https://fas.st/t/U2ssxRR2" 
+                    href="https://pollo.ai?ref=ntvjyzm" 
                     target="_blank"
                     rel="noopener noreferrer" 
                     className="card-title font-['Prompt','Sarabun',sans-serif] text-xl sm:text-2xl mb-2 sm:mb-4 text-gray-800 hover:text-blue-600 transition-colors duration-300 flex items-center"
