@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function Poll() {
     return (
-        <div className="card w-full h-full shadow-xl hover:scale-105 transition-transform duration-300 m-4" 
+        <div className="card w-full h-full shadow-xl hover:scale-105 transition-transform duration-300" 
             style={{ 
                 backgroundColor: 'rgba(255,255,255,0.9)', 
                 backdropFilter: 'blur(8px)',
