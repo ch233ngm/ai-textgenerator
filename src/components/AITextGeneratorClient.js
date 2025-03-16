@@ -1,10 +1,16 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
+import { useSession, signIn } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
 import { PencilIcon, LightBulbIcon, DocumentDuplicateIcon } from '@heroicons/react/24/outline';
 import Poll from './Poll';
 export default function AITextGeneratorClient() {
+    
+    const { data: session } = useSession();
+
+    
+
     const t = useTranslations('AITextGenerator');
 
     const [inputText, setInputText] = useState('');
@@ -16,13 +22,42 @@ export default function AITextGeneratorClient() {
         setInputText(e.target.value);
     };
 
+    // 添加埋点函数
+    const trackUserAction = async (statType) => {
+        if (!session?.user?.email) return;
+        
+        try {
+            await fetch(`${process.env.NEXT_PUBLIC_BASIC_URL}/api/user-stats`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    userEmail: session.user.email,
+                    statType: statType
+                }),
+            });
+        } catch (error) {
+            // 埋点失败不影响主流程
+        }
+    };
+
     const handleGenerate = async () => {
+        if (!session) {
+            alert("Please login to generate AI text.");
+            return;
+        }
+        
         setIsGenerating(true);
         if (inputText.trim() === '') {
             alert("Please enter some text to generate AI text.");
             setIsGenerating(false);
             return;
         }
+        
+        // 调用埋点函数记录文本生成行为
+        trackUserAction('text_gen');
+        
         const result = await fetch(`${process.env.NEXT_PUBLIC_API_URL}`, {
             method: 'POST',
             headers: {
@@ -38,6 +73,8 @@ export default function AITextGeneratorClient() {
             setIsGenerating(false);
             return;
         }
+
+        
         setIsGenerating(false);
 
 

@@ -3,7 +3,9 @@
 import { useState } from 'react';
 import { CameraIcon } from '@heroicons/react/24/solid';
 
+import { useSession } from 'next-auth/react';
 export default function Home() {
+  const { data: session } = useSession();
   const [inputText, setInputText] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -11,7 +13,33 @@ export default function Home() {
   const [width, setWidth] = useState(256);
   const [error, setError] = useState('');
 
+
+  // 添加埋点函数
+  const trackUserAction = async (statType) => {
+    if (!session?.user?.email) return;
+    
+    try {
+        await fetch(`${process.env.NEXT_PUBLIC_BASIC_URL}/api/user-stats`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                userEmail: session.user.email,
+                statType: statType
+            }),
+        });
+    } catch (error) {
+        // 埋点失败不影响主流程
+    }
+};
+
   const handleSubmit = async (e) => {
+    if (!session) {
+      setError('Please sign in to generate an image.');
+      return;
+    }
+
     e.preventDefault();
     setError('');
     setIsLoading(true);
@@ -34,6 +62,10 @@ export default function Home() {
       });
       const data = await response.json();
       setImageUrl(data.url);
+
+      // 调用埋点函数记录图像生成行为
+      trackUserAction('text_to_image');
+
     } catch (error) {
       console.error('Error:', error);
       setError('An error occurred while generating the image.');

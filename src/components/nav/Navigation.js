@@ -6,8 +6,12 @@ import { useTranslations } from 'next-intl';
 import { HomeIcon, FaceSmileIcon, NewspaperIcon, PencilIcon, WrenchScrewdriverIcon } from '@heroicons/react/24/outline';
 import { useRef, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-
+import { useSession, signOut } from 'next-auth/react';
 export default function Navigation() {
+    const { data: session } = useSession();
+
+    const image = session?.user?.image;
+
     const pathname = usePathname();
     // 如果是主页
     const isHomePage = pathname.split('/').length < 3;
@@ -108,6 +112,21 @@ export default function Navigation() {
                     <div className="ml-3">
                         <LanguageSwitcher />
                     </div>
+                    {session ? (
+                        <div className="dropdown dropdown-end ml-3">
+                            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full">
+                                    <img src={image} alt="User avatar" />
+                                </div>
+                            </label>
+                            <ul tabIndex={0} className={isHomePage ? 
+                                "mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100/5 backdrop-blur-md rounded-box w-52" : 
+                                "mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"}>
+                                <li><a onClick={() => signOut({ callbackUrl: '/' })}>{t('Logout')}</a></li>
+                            </ul>
+                        </div>
+                    ): (<></>)
+                }
                 </div>
             </div>
         </>

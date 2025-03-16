@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "devs": "node server.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -16,7 +17,9 @@
     "daisyui": "^4.12.20",
     "hast-util-from-html-isomorphic": "^2.0.0",
     "https-proxy-agent": "^7.0.6",
+    "jwt-decode": "^4.0.0",
     "next": "15.0.3",
+    "next-auth": "^4.24.11",
     "next-contentlayer2": "0.5.3",
     "next-intl": "^3.25.3",
     "next-view-transitions": "^0.3.4",
