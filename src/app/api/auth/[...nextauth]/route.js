@@ -1,6 +1,7 @@
 import NextAuth from "next-auth"
 import { jwtDecode } from "jwt-decode"
 import GoogleProvider from "next-auth/providers/google"
+import GithubProvider from "next-auth/providers/github"
 // 单独封装用户注册函数
 async function registerUser(userData) {
   try {
@@ -91,11 +92,35 @@ const authOptions = {
         }
       }
     }),
+    GithubProvider({
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
+      authorization: {
+        params: {
+          scope: 'read:user user:email'
+        }
+      },
+      async profile(profile) {
+        try {
+          const user = {
+            id: profile.id,
+            name: profile.name || profile.email,
+            email: profile.email,
+            image: profile.avatar_url,
+            provider: "github"
+          };
+          await registerUser(user);
+          return user;
+        } catch (error) {
+          console.error("注册用户时出错:", error);
+          return null;
+        }
+      }
+    }),
   ],
   callbacks: {
       // 这里都加上provider表示都是google-one-tap方式登陆，如果多种登陆方式时有用
     async signIn({ user, account }) { // 用户每次登录时都会调用（无论是首次登录还是重复登录）
-      console.log('signIn', user, account);
       if (account?.provider) {
         user.provider = account.provider
       }

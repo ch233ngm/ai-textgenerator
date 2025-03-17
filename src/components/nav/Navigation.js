@@ -4,12 +4,13 @@ import LanguageSwitcher from './LanguageSwitcher';
 import NotificationBellWrapper from './NotificationBellWrapper';
 import { useTranslations } from 'next-intl';
 import { HomeIcon, FaceSmileIcon, NewspaperIcon, PencilIcon, WrenchScrewdriverIcon } from '@heroicons/react/24/outline';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { useSession, signOut } from 'next-auth/react';
 import { signIn } from "next-auth/react"
 export default function Navigation() {
     const { data: session } = useSession();
+    const [showLoginModal, setShowLoginModal] = useState(false);
 
     const image = session?.user?.image;
 
@@ -60,6 +61,26 @@ export default function Navigation() {
     return (
         <>
             {!isHomePage && <div className="h-16"></div>} {/* 只在非主页添加间隔 */}
+            
+            {/* 登录选择模态框 */}
+            {showLoginModal && (
+                <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50" onClick={() => setShowLoginModal(false)}>
+                    <div className="bg-base-100 p-6 rounded-lg shadow-xl w-80" onClick={(e) => e.stopPropagation()}>
+                        <h3 className="font-bold text-lg mb-4">Choose Login Method</h3>
+                        <div className="flex flex-col gap-3">
+                            <button onClick={() => signIn('google')} className="btn btn-outline">
+                                <img src="/static/images/google-icon.svg" alt="Google" className="w-5 h-5 mr-2" />
+                                Sign in with Google
+                            </button>
+                            <button onClick={() => signIn('github')} className="btn btn-outline">
+                                <img src="/static/images/github-icon.svg" alt="GitHub" className="w-5 h-5 mr-2" />
+                                Sign in with GitHub
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+            
             <div className={isHomePage ? "navbar fixed top-0 left-0 right-0 z-50 shadow-md bg-base-100/5 backdrop-blur-md text-neutral-content"
                 : "navbar fixed top-0 left-0 right-0 z-50 shadow-md bg-base-100"}>
                 <div className="navbar-start">
@@ -127,7 +148,7 @@ export default function Navigation() {
                             </ul>
                         </div>
                     ) : (
-                        <button onClick={() => signIn('google')} className={isHomePage ? 
+                        <button onClick={() => setShowLoginModal(true)} className={isHomePage ? 
                             "btn btn-ghost btn-sm ml-3 border border-primary text-primary hover:bg-primary hover:text-white" : 
                             "btn btn-ghost btn-sm ml-3 border border-primary text-primary hover:bg-primary hover:text-white"}>
                             Login
