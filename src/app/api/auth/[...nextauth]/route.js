@@ -1,6 +1,6 @@
 import NextAuth from "next-auth"
 import { jwtDecode } from "jwt-decode"
-
+import GoogleProvider from "next-auth/providers/google"
 // 单独封装用户注册函数
 async function registerUser(userData) {
   try {
@@ -13,7 +13,7 @@ async function registerUser(userData) {
         email: userData.email,
         name: userData.name,
         image: userData.image,
-        provider: 'google'
+        provider: userData.provider
       }),
     });
     
@@ -62,7 +62,35 @@ const authOptions = {
           return null;
         }
       } // 当用户尝试登录时调用
-    }
+    },
+    GoogleProvider({
+      clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      authorization: {
+        params: {
+          scope: 'openid email profile',
+          prompt: "consent",
+          access_type: "offline",
+          response_type: "code"
+        }
+      },
+      async profile(profile) {
+        try {
+        const user = {
+          id: profile.sub,
+          name: profile.name,
+          email: profile.email,
+          image: profile.picture,
+          provider: "google"
+        }
+        await registerUser(user);
+        return user;
+        } catch (error) {
+          console.error("注册用户时出错:", error);
+          return null;
+        }
+      }
+    }),
   ],
   callbacks: {
       // 这里都加上provider表示都是google-one-tap方式登陆，如果多种登陆方式时有用

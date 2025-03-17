@@ -7,6 +7,7 @@ import { HomeIcon, FaceSmileIcon, NewspaperIcon, PencilIcon, WrenchScrewdriverIc
 import { useRef, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { useSession, signOut } from 'next-auth/react';
+import { signIn } from "next-auth/react"
 export default function Navigation() {
     const { data: session } = useSession();
 
@@ -125,8 +126,13 @@ export default function Navigation() {
                                 <li><a onClick={() => signOut({ callbackUrl: '/' })}>{t('Logout')}</a></li>
                             </ul>
                         </div>
-                    ): (<></>)
-                }
+                    ) : (
+                        <button onClick={() => signIn('google')} className={isHomePage ? 
+                            "btn btn-ghost btn-sm ml-3 border border-primary text-primary hover:bg-primary hover:text-white" : 
+                            "btn btn-ghost btn-sm ml-3 border border-primary text-primary hover:bg-primary hover:text-white"}>
+                            Login
+                        </button>
+                    )}
                 </div>
             </div>
         </>
