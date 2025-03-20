@@ -37,9 +37,14 @@ export default function AITextGeneratorClient() {
                     statType: statType
                 }),
             });
-            console.log("打印text", result); 
+            // 接口响应示例
+            //{"success":true,"message":"用户统计数据已更新","stats":{"total":2,"daily":2}}
+            const data = await result.json();
+            return data.stats; // 返回统计数据
+
         } catch (error) {
             // 埋点失败不影响主流程
+            return null;
         }
     };
 
@@ -57,7 +62,9 @@ export default function AITextGeneratorClient() {
         }
         
         // 调用埋点函数记录文本生成行为
-        trackUserAction('text_gen');
+        const userStats = await trackUserAction('text_gen');
+        
+        console.log("打印userStats", userStats);
         
         const result = await fetch(`${process.env.NEXT_PUBLIC_API_URL}`, {
             method: 'POST',
