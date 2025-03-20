@@ -17,6 +17,8 @@ export default function AITextGeneratorClient() {
     const [outputText, setOutputText] = useState('');
     const [isGenerating, setIsGenerating] = useState(false);
     const [isCopied, setIsCopied] = useState(false);
+    const [userStats, setUserStats] = useState(null);
+    const [showShareModal, setShowShareModal] = useState(false);
 
     const handleInputChange = (e) => {
         setInputText(e.target.value);
@@ -62,10 +64,16 @@ export default function AITextGeneratorClient() {
         }
         
         // 调用埋点函数记录文本生成行为
-        const userStats = await trackUserAction('text_gen');
+        const stats = await trackUserAction('text_gen');
+        setUserStats(stats);
         
-        console.log("打印userStats", userStats);
-        
+        // 检查用户是否超过每日限制
+        if (stats && stats.daily > 3) {
+            setIsGenerating(false);
+            setShowShareModal(true);
+            return;
+        }
+
         const result = await fetch(`${process.env.NEXT_PUBLIC_API_URL}`, {
             method: 'POST',
             headers: {
@@ -107,6 +115,27 @@ export default function AITextGeneratorClient() {
             setTimeout(() => setIsCopied(false), 2000); // Reset after 2 seconds
         });
     }, [outputText]);
+
+    // 生成分享链接
+    const generateShareLink = () => {
+        const baseUrl = window.location.origin;
+        return `${baseUrl}?ref=${session?.user?.email || 'unknown'}`;
+    };
+
+    // 处理分享操作
+    const handleShare = async () => {
+        try {
+            await navigator.clipboard.writeText(generateShareLink());
+            alert(t('linkCopied'));
+            
+            // 记录分享行为并获得额外次数
+            const updatedStats = await trackUserAction('share_link');
+            setUserStats(updatedStats);
+            setShowShareModal(false);
+        } catch (error) {
+            console.error("分享失败:", error);
+        }
+    };
 
     return (
         <div className="flex flex-col lg:flex-row gap-6">
@@ -185,6 +214,37 @@ export default function AITextGeneratorClient() {
                     </div>
                 </div>
             </div>
+            
+            {/* 显示用户剩余次数 */}
+            {userStats && (
+                <div className="text-sm text-gray-600 mb-2">
+                    {t('remainingDaily')}: {Math.max(0, 3 - userStats.daily)}/3
+                </div>
+            )}
+            
+            {/* 分享模态框 */}
+            {showShareModal && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                    <div className="bg-white p-6 rounded-lg max-w-md">
+                        <h3 className="text-lg font-bold mb-4">{t('shareToGetMore')}</h3>
+                        <p className="mb-4">{t('shareDescription')}</p>
+                        <div className="flex justify-end gap-2">
+                            <button 
+                                className="btn btn-outline" 
+                                onClick={() => setShowShareModal(false)}
+                            >
+                                {t('cancel')}
+                            </button>
+                            <button 
+                                className="btn btn-primary" 
+                                onClick={handleShare}
+                            >
+                                {t('share')}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
