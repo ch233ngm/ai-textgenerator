@@ -19,7 +19,7 @@ export default function Home() {
     if (!session?.user?.email) return;
     
     try {
-        await fetch(`${process.env.NEXT_PUBLIC_BASIC_URL}/api/user-stats`, {
+        const result = await fetch(`${process.env.NEXT_PUBLIC_BASIC_URL}/api/user-stats`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -29,6 +29,7 @@ export default function Home() {
                 statType: statType
             }),
         });
+        console.log("打印image", result); 
     } catch (error) {
         // 埋点失败不影响主流程
     }
