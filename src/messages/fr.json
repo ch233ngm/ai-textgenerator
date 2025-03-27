@@ -7,16 +7,16 @@
         "About": "à propos",
         "FreeUseNotification": "Vous pouvez désormais utiliser notre service gratuitement !",
         "heroH1": "Générateur de texte IA gratuit",
-        "heroP": "Générez du texte créatif, des articles et bien plus encore avec notre générateur de texte AI, aucune connexion requise !",
+        "heroP": "Générez du texte créatif, des articles et bien plus encore avec notre générateur de texte AI !",
         "heroP2": "Rapide et précis, inspirant. Laissez votre voyage de mots être plein de surprises.",
         "showPrompt": "Salut! Je suis un générateur de texte IA.",
         "showPrompt1": "Veuillez saisir votre texte ici...",
         "showPrompt2": "Parlez-moi de vous !",
         "showPrompt3": "Je suis un générateur de texte AI gratuit...",
-        "title": "Générateur de texte AI (gratuit, sans connexion !)",
+        "title": "Générateur de texte AI (gratuit!)",
         "textTool": "Générateur de texte IA",
         "responseTool": "Générateur de réponses IA",
-        "description": "Générez du texte créatif, des articles et bien plus encore avec notre générateur de texte AI, aucune connexion requise ! Gratuit, aucune inscription requise. Ne manquez pas votre voyage créatif !"
+        "description": "Générez du texte créatif, des articles et bien plus encore avec notre générateur de texte AI! Gratuit. Ne manquez pas votre voyage créatif!"
     },
     "AITextGenerator": {
         "copied": "Copié!",
