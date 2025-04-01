@@ -115,7 +115,11 @@ export default function AITextGeneratorClient() {
                             value={inputText}
                             onChange={handleInputChange}
                         ></textarea>
-                        <div className="card-actions justify-end">
+                        <div className="card-actions justify-end flex items-center gap-x-2 mt-4"> {/* Added flex, items-center, gap-x-2, moved mt-4 here */}
+                            <a href="https://ghiblistyleimagegenerator.net/" className="btn btn-primary" title="Ghibli Style Image Generator"> {/* Removed mt-4 */}
+                                Ghibli Style Image Generator
+                            </a>
+
                             <button
                                 className="btn btn-primary"
                                 onClick={handleGenerate}
